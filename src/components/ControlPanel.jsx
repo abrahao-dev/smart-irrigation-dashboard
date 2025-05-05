@@ -49,7 +49,7 @@ const ControlPanel = ({ irrigationStatus, onToggleIrrigation, isSoilCritical, is
         <div className="flex space-x-3">
           <button
             onClick={handleTurnOn}
-            disabled={loading || irrigationStatus}
+            disabled={loading} // Removida condicional irrigationStatus para permitir testes
             className={`flex items-center justify-center px-4 py-2 rounded-md text-white ${irrigationStatus ? 'bg-gray-400 cursor-not-allowed' : 'bg-secondary-600 hover:bg-secondary-700'} transition-colors`}
           >
             <FaPlay className="mr-2" /> Ligar irrigação
@@ -57,7 +57,7 @@ const ControlPanel = ({ irrigationStatus, onToggleIrrigation, isSoilCritical, is
 
           <button
             onClick={handleTurnOff}
-            disabled={loading || !irrigationStatus}
+            disabled={loading} // Removida condicional !irrigationStatus para permitir testes
             className={`flex items-center justify-center px-4 py-2 rounded-md text-white ${!irrigationStatus ? 'bg-gray-400 cursor-not-allowed' : 'bg-danger-600 hover:bg-danger-700'} transition-colors`}
           >
             <FaStop className="mr-2" /> Desligar irrigação

@@ -17,7 +17,7 @@ class MQTTService {
   }
 
   // Initialize MQTT client and connect to broker
-  connect(brokerUrl = 'wss://broker.hivemq.com:8884/mqtt', onConnect, onFailure) {
+  connect(brokerUrl = 'ws://localhost:9001', onConnect, onFailure) {
     try {
       // Generate a unique client ID based on timestamp
       const clientId = `irrigation_dashboard_${uuidv4().substring(0, 8)}`;
@@ -31,7 +31,7 @@ class MQTTService {
       
       // Connect the client
       const options = {
-        useSSL: true,
+        useSSL: false, // Desativa SSL para conexão local
         timeout: 3,
         onSuccess: () => {
           console.log('Connected to MQTT broker');

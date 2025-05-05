@@ -35,9 +35,15 @@ export const DataProvider = ({ children }) => {
   // Connect to MQTT when authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      // Connect to MQTT broker
+      // Connect to MQTT broker - using environment variables if available
+      const mqttHost = import.meta.env.VITE_MQTT_HOST || window.location.hostname || 'localhost';
+      const mqttPort = import.meta.env.VITE_MQTT_PORT || '9001';
+      const mqttPath = import.meta.env.VITE_MQTT_PATH || '/mqtt';
+      const mqttUrl = `ws://${mqttHost}:${mqttPort}${mqttPath}`;
+      console.log(`Tentando conectar ao broker MQTT em: ${mqttUrl}`);
+      
       mqttService.connect(
-        'wss://broker.hivemq.com:8884/mqtt',
+        mqttUrl,
         () => setMqttConnected(true),
         () => setMqttConnected(false)
       );

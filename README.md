@@ -75,7 +75,8 @@ O dashboard está configurado para se conectar a um broker MQTT para receber dad
 - `chuva/status` - Status de chuva (true/false)
 - `ambiente/temperatura` - Temperatura ambiente (°C)
 - `ambiente/umidade` - Umidade do ar (%)
-- `irrigacao/controle` - Controle da irrigação (on/off)
+- `irrigacao/status` - Status da irrigação (ON/OFF)
+- `irrigacao/comando` - Controle da irrigação (ON/OFF)
 
 ### Autenticação
 
